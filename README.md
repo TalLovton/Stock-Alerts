@@ -4,11 +4,18 @@ Stock Alerts is a Python-based project that leverages an API to monitor stock pr
 ## Features
 Real-Time Stock Price Monitoring: The project uses the yfinance library to fetch the last adjusted close price for each stock ticker in real-time, ensuring up-to-date information.
 
+![Modules](https://github.com/TalLovton/Stock-Alerts/assets/78549129/a0dc9bc5-c4a7-48cc-8767-a34cd366b6e6)
+
+![Terminal](https://github.com/TalLovton/Stock-Alerts/assets/78549129/0cd8f0bd-b550-4918-92dd-8300a71addc3)
+
+![Alerts](https://github.com/TalLovton/Stock-Alerts/assets/78549129/e187a7a6-6b96-495b-91a6-112ccf2c7b31)
+
 Customizable Alert System: Users can set their desired entry and take profit prices for each stock, enabling personalized and targeted notifications.
 
 Desktop Notifications: The Plyer library is integrated to display desktop notifications when a stock price surpasses the specified thresholds. The notifications include relevant details such as the ticker symbol, current price, and suggested actions (e.g., buying or selling).
 
 User-Friendly Menu: The project provides an interactive menu that allows users to easily add, edit, and remove stock tickers from the monitoring list. It ensures a seamless and intuitive user experience.
+
 
 Input Validation: The program performs validation checks to ensure that the user's input for entry and take profit prices is valid, enhancing data integrity and reliability.
 
