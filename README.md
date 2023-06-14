@@ -27,7 +27,7 @@ yfinance library: Install using pip install yfinance.
 Plyer library: Install using pip install plyer.
 
 ## Getting Started
-1. Clone this repository: git clone https://github.com/yourusername/stock-alerts.git
+1. Clone this repository: git clone https://github.com/TalLovton/stock-alerts.git
 
 2. Install the required libraries: pip install -r requirements.txt
 
