@@ -1,12 +1,24 @@
 class Stock:
-    def __init__(self,tickerStr, lowerLimit, upperLimit):
+    tickerStr = None
+    entryPrice = 0.00
+    takeProfitPrice = 0.00
+    
+    def __init__(self,tickerStr, entry, profit):
         self.tickerStr = tickerStr
-        self.lowerLimit = float(lowerLimit)
-        self.upperLimit = float(upperLimit)
+        self.entryPrice = entry
+        self.takeProfitPrice = profit 
 
-    def setLowerLimitPrice(self,newPrice):
-        self.lowerLimit = float(newPrice)
+    def setEntryPrice(self,newPrice):
+        self.entryPrice = newPrice
+        
 
-    def setUpperLimitPrice(self, newPrice):
-        self.upperLimit = float(newPrice)
+    def setProfitPrice(self, newPrice):
+        self.takeProfitPrice = newPrice
+
+    def getEntryPrice(self):
+        return self.entryPrice
+        
+
+    def getProfitPrice(self):
+        return self.takeProfitPrice
 
