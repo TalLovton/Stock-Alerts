@@ -10,6 +10,9 @@ path = 'clientPortfolio.csv'
 #extracting the latest stock prices, compare to user input and notificate
 def stockAlarm():
     tickersMap = loadPortfolio()
+    if not tickersMap:
+        print("Your portfolio is empty! put some stocks and lets get to business!")
+        return
     tickersList = list(tickersMap.keys())
     while True:
         # Retrieve the last adjusted close price for each ticker
@@ -24,7 +27,7 @@ def stockAlarm():
             rangeValue = tmpEntryPrice * 1.5 / 100  # 1.5% below or above to entryPrice
             if tmpEntryPrice - rangeValue <= lastPrices[i] <= tmpEntryPrice + rangeValue:
                 alert(symbol,formatPrice,"reached your entry price")
-            
+
             
             elif lastPrices[i] >= tickersMap.get(symbol).getProfitPrice():
                 alert(symbol,formatPrice,"reached your take profit price")
@@ -81,8 +84,8 @@ def setPortfolio(df, stockList):
 # if portfolio is already exist, check for actions
 def checkPortfolio(df,stocksList):
     while(True):
-        ans = input("would like to add/remove ticker? (a/r) or n)").strip()
-        if ans != 'a' and ans != 'r' and ans != 'n':
+        ans = input("would like to add(a)/remove(r)/exit(e)? ").strip().lower()
+        if ans != 'a' and ans != 'r' and ans != 'e':
             print("your answer is invalid, please try again")
             continue
         if(ans == 'a'):
@@ -97,8 +100,7 @@ def checkPortfolio(df,stocksList):
 def removeStock(df,stockList):
     flag = True
     while(flag):
-        ticker = input("which ticker would you like to remove? ").strip()
-        print(df['Ticker'].values)
+        ticker = input("which ticker would you like to remove? ").strip().upper()
         if checkValidTicker(ticker) and ticker in df['Ticker'].values:
             for index, row in df.iterrows():
                 if row['Ticker'] == ticker:
@@ -113,7 +115,11 @@ def removeStock(df,stockList):
                 print("your portfolio is empty")
                 setPortfolio(df,stockList)
                 break
-            continue
+            print("the stock does not exist at your portfolio, try again.")
+            ans = input("Would you like to exit without remove? (y)").strip().lower()
+            if(ans != 'y'):
+                continue
+            break
 
 
 # chacking validations of user sticker input, except only if .info is None
@@ -132,6 +138,8 @@ def checkValid(entryPrice, profitPrice):
         try:
             float(profitPrice)
             float(entryPrice)
+            if profitPrice < entryPrice:
+                return False
             return True
         except ValueError:
             print("Invalid input!. Please enter a valid number.")
